@@ -8,7 +8,7 @@ resource "aws_instance" "roboshop" {
   }
 }
 
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "main" {
   for_each = aws_instance.roboshop
   zone_id = var.zone_id
   name    = each.key == "frontend" ? var.domain_name : "${each.key}.${var.domain_name}"
